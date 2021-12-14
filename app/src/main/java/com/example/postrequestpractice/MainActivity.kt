@@ -57,9 +57,8 @@ class MainActivity : AppCompatActivity() {
                 )
             ).enqueue(object : Callback<UsersItem> {
                 override fun onResponse(call: Call<UsersItem>, response: Response<UsersItem>) {
-                    builder.setTitle("Users added successfully")
-                    builder.setNegativeButton("OK", { dialogInterface: DialogInterface, i: Int -> })
-                    builder.show()
+                    locationTxt.text = null
+                    nameTxt.text = null
                     recreate()
                 }
 
@@ -68,6 +67,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
             })
+
         }
     }
 }
