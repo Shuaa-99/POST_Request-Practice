@@ -1,8 +1,6 @@
 package com.example.postrequestpractice
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ServiceAPI {
     @GET("test/")
@@ -10,4 +8,10 @@ interface ServiceAPI {
 
     @POST("test/")
     fun addUser(@Body userData: UsersItem): Call<UsersItem>
+
+    @PUT("/test/{id}")
+    fun updateUser(@Path("id")id:Int, @Body userData: UsersItem):Call<UsersItem>
+
+    @DELETE("/test/{id}")
+    fun deleteUser(@Path("id")id:Int):Call<Void>
 }

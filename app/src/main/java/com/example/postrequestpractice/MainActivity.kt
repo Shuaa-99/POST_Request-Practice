@@ -1,12 +1,11 @@
 package com.example.postrequestpractice
 
-import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,8 +18,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var nameTxt: EditText
     private lateinit var locationTxt: EditText
-    private lateinit var buttonPress: Button
-
+    private lateinit var addBtnPress: Button
+    private lateinit var updateDeletePress: Button
     private lateinit var users: Users
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +27,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         nameTxt = findViewById(R.id.etName)
         locationTxt = findViewById(R.id.etLocation)
-        buttonPress = findViewById(R.id.btAdd)
+        addBtnPress = findViewById(R.id.btAdd)
+        updateDeletePress =  findViewById(R.id.btUpdateDelete)
         users = Users()
         rvMain = findViewById(R.id.rvMain)
         rvAdapter = RVAdapter(users)
@@ -47,8 +47,11 @@ class MainActivity : AppCompatActivity() {
                 Log.d("MAIN", "Unable to get data")
             }
         })
-
-        buttonPress.setOnClickListener {
+updateDeletePress.setOnClickListener {
+    val intent = Intent(this,UpdateDeleteActivity::class.java)
+    startActivity(intent)
+}
+        addBtnPress.setOnClickListener {
             apiInterface!!.addUser(
                 UsersItem(
                     locationTxt.text.toString(),
