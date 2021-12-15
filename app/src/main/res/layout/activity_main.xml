@@ -28,13 +28,15 @@
             android:id="@+id/etName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name" />
+            android:hint="Name"
+            android:inputType="textPersonName"/>
 
         <EditText
             android:id="@+id/etLocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Location" />
+            android:hint="Location"
+            android:inputType="text"/>
 
         <Button
             android:id="@+id/btAdd"
